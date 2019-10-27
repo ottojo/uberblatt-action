@@ -1,0 +1,6 @@
+# action.yml
+name: 'Übungsblatt'
+description: 'Build LaTeX in each directory and deploy PDFs to GitHub Pages'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
