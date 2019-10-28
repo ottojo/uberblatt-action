@@ -1,4 +1,12 @@
 #!/bin/bash
+
+pwd
+tree
+ls -lah /root
+ls -lah /
+env
+
+
 OUT_DIR="$RUNNER_TEMP/build"
 cd $RUNNER_WORKSPACE
 for directory in */; do
