@@ -1,4 +1,4 @@
-# uberblatt-action
+# Uberblatt
 This action runs `latexmk` in every sub-directory of the repository.
 It also lists the generated PDF files in a `index.html` file and saves everything to the `build` directory.
 
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Set up Git repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Compile and Deploy LaTeX to PDF
       uses: ottojo/uberblatt-action@v2
     - name: GitHub Pages Deploy
