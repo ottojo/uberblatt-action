@@ -28,7 +28,7 @@ for directory in */; do
     find $OUT_DIR/$directory -type f ! -name "*.pdf" -exec rm {} \;
     FILENAME=$(find $OUT_DIR/$directory -type f -name "*.pdf")
     FILENAME=$(basename "$FILENAME")
-    echo "        <li><a href=\"/$directory$FILENAME\">$directory$FILENAME</a></li>" >> $OUT_DIR/index.html
+    echo "        <li><a href=\"$directory$FILENAME\">$directory$FILENAME</a></li>" >> $OUT_DIR/index.html
 done
 
 echo "    </ul>
