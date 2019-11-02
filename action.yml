@@ -1,5 +1,5 @@
 # action.yml
-name: 'Übungsblatt'
+name: 'Uberblatt'
 description: 'Build LaTeX in each directory and deploy PDFs to GitHub Pages'
 branding:
   icon: 'file-text'
