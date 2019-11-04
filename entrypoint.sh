@@ -21,7 +21,7 @@ for directory in */; do
     fi
 
     echo "Building $directory"
-    cd $directory
+    cd $REPO_DIR/$directory
     mkdir -p $OUT_DIR/$directory
     latexmk -pdf -output-directory=$OUT_DIR/$directory
     # Remove every output that isn't a PDF
