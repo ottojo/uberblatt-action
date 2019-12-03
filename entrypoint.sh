@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 REPO_DIR="$(pwd)"
 DEPLOY_DIR="$REPO_DIR/build"
 ARTIFACT_PREFIX="ARTIFACTS:"
