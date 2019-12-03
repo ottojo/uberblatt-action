@@ -1,6 +1,6 @@
 #!/bin/bash
 REPO_DIR="$(pwd)"
-DEPLOY_DIR="$REPO_DIR/../deploy"
+DEPLOY_DIR="$REPO_DIR/build"
 ARTIFACT_PREFIX="ARTIFACTS:"
 
 mkdir -p "$DEPLOY_DIR"
