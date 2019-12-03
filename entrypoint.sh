@@ -1,8 +1,9 @@
 #!/bin/bash
-REPO_ROOT="$(pwd)"
-OUT_DIR="$(pwd)/build"
+REPO_DIR="$(pwd)"
+DEPLOY_DIR="$REPO_DIR/../deploy"
+ARTIFACT_PREFIX="ARTIFACTS:"
 
-mkdir -p $OUT_DIR
+mkdir -p "$DEPLOY_DIR"
 
 echo "<!DOCTYPE HTML>
 <html>
@@ -12,25 +13,26 @@ echo "<!DOCTYPE HTML>
 </head>
 <body>
     <h1>$GITHUB_REPOSITORY</h1>
-    <ul>" > $OUT_DIR/index.html
+    <ul>" > $DEPLOY_DIR/index.html
 
 for directory in */; do
 
-    if [ "$directory" == "build/" ]; then
-        continue
-    fi
-
     echo "Building $directory"
-    cd $REPO_ROOT/$directory
-    mkdir -p $OUT_DIR/$directory
-    latexmk -pdf -output-directory=$OUT_DIR/$directory
-    # Remove every output that isn't a PDF
-    find $OUT_DIR/$directory -type f ! -name "*.pdf" -exec rm {} \;
-    FILENAME=$(find $OUT_DIR/$directory -type f -name "*.pdf")
-    FILENAME=$(basename "$FILENAME")
-    echo "        <li><a href=\"$directory$FILENAME\">$directory$FILENAME</a></li>" >> $OUT_DIR/index.html
+    cd $REPO_DIR/$directory
+    ARTIFACTS=$(make | grep "$ARTIFACT_PREFIX")
+    ARTIFACTS=${ARTIFACTS#"$ARTIFACT_PREFIX"}
+    echo "Build artifacts: $ARTIFACTS"
+
+    mkdir -p $(dirname "$DEPLOY_DIR/$directory/$artifact")
+
+    for artifact in $(echo $ARTIFACTS | sed "s/,/ /g"); do
+        cp "$REPO_DIR/$directory/$artifact" "$DEPLOY_DIR/$directory/$artifact"
+        echo "        <li><a href=\"$directory$artifact\">$directory$artifact</a></li>" >> $REPO_DIR/index.html
+    done
+    
+    
 done
 
 echo "    </ul>
 </body>
-</html>" >> $OUT_DIR/index.html
+</html>" >> $DEPLOY_DIR/index.html
