@@ -31,7 +31,7 @@ for directory in */; do
     for artifact in $(echo $ARTIFACTS | sed "s/,/ /g"); do
         mkdir -p $(dirname "$DEPLOY_DIR/$directory/$artifact")
         cp "$REPO_DIR/$directory/$artifact" "$DEPLOY_DIR/$directory/$artifact"
-        echo "        <li><a href=\"$directory$artifact\">$directory$artifact</a></li>" >> $REPO_DIR/index.html
+        echo "        <li><a href=\"$directory$artifact\">$directory$artifact</a></li>" >> $DEPLOY_DIR/index.html
     done
     
 done
