@@ -3,6 +3,7 @@ REPO_DIR="$(pwd)"
 DEPLOY_DIR="$REPO_DIR/build"
 ARTIFACT_PREFIX="ARTIFACTS:"
 
+echo "Creating deploy directory: $DEPLOY_DIR"
 mkdir -p "$DEPLOY_DIR"
 
 echo "<!DOCTYPE HTML>
@@ -17,6 +18,10 @@ echo "<!DOCTYPE HTML>
 
 for directory in */; do
 
+    if [[ $directory == *"build" ]]; then
+        continue
+    fi
+
     echo "Building $directory"
     cd $REPO_DIR/$directory
     ARTIFACTS=$(make | grep "$ARTIFACT_PREFIX")
@@ -29,7 +34,6 @@ for directory in */; do
         cp "$REPO_DIR/$directory/$artifact" "$DEPLOY_DIR/$directory/$artifact"
         echo "        <li><a href=\"$directory$artifact\">$directory$artifact</a></li>" >> $REPO_DIR/index.html
     done
-    
     
 done
 
