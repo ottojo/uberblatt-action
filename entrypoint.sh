@@ -18,7 +18,7 @@ echo "<!DOCTYPE HTML>
 
 for directory in */; do
 
-    if [[ $directory == *"build" ]]; then
+    if [[ $directory == *"build/" ]]; then
         continue
     fi
 
@@ -28,6 +28,7 @@ for directory in */; do
     ARTIFACTS=${ARTIFACTS#"$ARTIFACT_PREFIX"}
     echo "Build artifacts: $ARTIFACTS"
 
+    echo "Creating build directory:" $(dirname "$DEPLOY_DIR/$directory/$artifact")
     mkdir -p $(dirname "$DEPLOY_DIR/$directory/$artifact")
 
     for artifact in $(echo $ARTIFACTS | sed "s/,/ /g"); do
