@@ -30,7 +30,7 @@ jobs:
     - name: Set up Git repository
       uses: actions/checkout@v4
     - name: Compile and Deploy LaTeX to PDF
-      uses: ottojo/uberblatt-action@v2
+      uses: ottojo/uberblatt-action@master
     - name: GitHub Pages Deploy
       uses: maxheld83/ghpages@v0.2.1
       env:
