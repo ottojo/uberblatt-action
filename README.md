@@ -12,7 +12,7 @@ all: Pflichtenheft.pdf
 This is intended to work with [maxheld83/ghpages](https://github.com/maxheld83/ghpages) to use GitHub-Pages to download the PDFs.
 
 ## Example
-* [ottojo/SoPra-Exercises](https://github.com/ottojo/SoPra-Exercises)
+* [SoPra-Team-17/Meilensteine](https://github.com/SoPra-Team-17/Meilensteine)
 
 `.github/workflows/main.yml`
 ```yaml
