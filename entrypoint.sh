@@ -27,6 +27,12 @@ for directory in */; do
 
     echo "Building $directory"
     cd $REPO_DIR/$directory
+
+    if [[ ! -f "Makefile" ]]; then
+        echo "No Makefile found."
+        continue
+    fi
+
     ARTIFACTS=$(make | grep "$ARTIFACT_PREFIX")
     ARTIFACTS=${ARTIFACTS#"$ARTIFACT_PREFIX"}
     echo "Build artifacts: $ARTIFACTS"
