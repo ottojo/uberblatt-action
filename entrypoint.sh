@@ -3,6 +3,9 @@ REPO_DIR="$(pwd)"
 DEPLOY_DIR="$REPO_DIR/build"
 ARTIFACT_PREFIX="ARTIFACTS:"
 
+# Fail when any command fails
+set -e
+
 echo "Creating deploy directory: $DEPLOY_DIR"
 mkdir -p "$DEPLOY_DIR"
 
