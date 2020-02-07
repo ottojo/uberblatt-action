@@ -26,7 +26,7 @@ for directory in */; do
     fi
 
     echo "Building $directory"
-    cd $REPO_DIR/$directory
+    cd "$REPO_DIR/$directory"
 
     if [[ ! -f "Makefile" ]]; then
         echo "No Makefile found."
